@@ -1,0 +1,49 @@
+{
+  "name": "AURIS",
+  "version": "1.0.0",
+  "description": "AURIS — Ultimate Music Player",
+  "author": "AURIS",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build-mac-intel": "electron-builder --mac --x64",
+    "build-mac-arm": "electron-builder --mac --arm64",
+    "build-win": "electron-builder --win --x64",
+    "build:all": "npm run build-mac-intel && npm run build-mac-arm && npm run build-win"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^25.0.0"
+  },
+  "build": {
+    "appId": "com.auris.player",
+    "productName": "AURIS",
+    "extraResources": [
+      {
+        "from": "bin",
+        "to": "bin",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "files": [
+      "main.js",
+      "preload.js",
+      "AURIS 2.html",
+      "icon.icns",
+      "icon.ico"
+    ],
+    "mac": {
+      "target": "dmg",
+      "icon": "icon.icns",
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "icon.ico"
+    }
+  }
+}
